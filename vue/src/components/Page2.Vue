@@ -9,27 +9,10 @@
 var url = 'http://localhost:3000/show'
 export default {
   name: 'Page2',
-  data: {
-    info: null,
-    err: null
-  },
-  created: function () {
-     this.init();
-    },
-    methods: {
-        init: function(){
-            this.loadData();
-        },
-        loadData: function(){
-
-            this.$http.get(url).then((response) => {
-                if(!!response.body) {
-                    this.info = response.body;
-                }
-            }, (response) => {
-                this.err = response;
-            });
-        }
+  data () {
+    return {
+      msg: 'Welcome to Your Vue.js App'
     }
   }
+}
 </script>
