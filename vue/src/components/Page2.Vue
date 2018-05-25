@@ -14,7 +14,7 @@ export default {
         }
     },
         created() {
-            axios.get('http://192.168.99.100:3000/show')
+            axios.get('http://localhost:3000/show')
             //http://jsonplaceholder.typicode.com/todos
             .then(response => {
                 this.tickets = response.data

@@ -1,17 +1,65 @@
 <template>
 <div class="container">
-<h1>Page1</h1>
-<h2>{{ msg }}</h2>
+ <!-- <p>{{ items }}</p>-->
+    <div class="row">
+               <div class="col-md-8">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                      <th style="text-align: center">ID</th>
+                      <th style="text-align: center">NO</th>
+                      <th style="text-align: center">NAME</th>
+                       <th style="text-align: center">PASSWORD</th>
+                    </thead>
+                    <tr v-for="item in items">
+                      <td>{{ item._id }}</td>
+                      <td>{{ item.No }}</td>
+                      <td>{{ item.Uname }}</td>
+                      <td>{{ item.Password }}</td>
+                      <td><button class="btn btn-warning" v-on:click="setUpdate(item)">edit</button></td>
+                      <td><button class="btn btn-danger" v-on:click="remove(item)">delete</button></td>
+                    </tr>
+                </table>
+            </div>
+            </div>
+             <hr>
+            <!-- {{ items }} -->
+            <div class="col-md-4">
+              <div class="form-group">
+                <span><b>{{ action }}</b></span>
+                <hr>
+                <input class="form-control" style="margin-bottom: 20px" type="text" name="No" v-model="No" placeholder="No" />
+                <input class="form-control" style="margin-bottom: 20px" type="text" name="Uname" v-model="Uname" placeholder="name" />
+                <input class="form-control" style="margin-bottom: 20px" name="Password" v-model="Password" placeholder="Password" type="password" />
+                <button class="btn btn-outline-primary" v-on:click="createItem">create</button>
+                <button class="btn btn-outline-warning" v-on:click="updateItem">update</button>
+                <button class="btn btn-outline-danger">delete</button>
+              </div>
+            </div>
 </div>
 </template>
 <script>
+import axios from 'axios'
+import qs from 'query-string'
 export default {
-  name: 'Page1',
-  data () {
-    return {
-      msg: 'Welcome to Your Vue.js App'
-    }
-  }
+ data () {
+   return {
+     items: [],
+     No: '',
+     Uname: '',
+     Password: '',
+     updateId: '',
+     action: 'New item',
+     update_id: '',
+     backup: {} //used to save old value to search
+   }
+ },
+   created() {
+     axios.get('http://localhost:3000/show')
+            //http://jsonplaceholder.typicode.com/todos
+            .then(response => {
+                this.items = response.data
+            })
+   }
 }
 </script>
 
