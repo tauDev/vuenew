@@ -1,17 +1,24 @@
 <template>
-<div class="container">
+<div id="p2">
     <h1>Page2</h1>
-    <p>{{resu}}</p>
+    <p>Original message: "{{ tickets }}"</p>
  </div>
 </template>
-
 <script>
+import axios from 'axios'
 export default {
-  name: 'Page1',
-  data () {
-    return {
-      resu: 'Welcome to Your Vue.js App 2'
-    }
-  }
+    name: 'Page2',
+    data () {
+        return {
+            tickets: []
+        }
+    },
+        created() {
+            axios.get('http://192.168.99.100:3000/show')
+            //http://jsonplaceholder.typicode.com/todos
+            .then(response => {
+                this.tickets = response.data
+            })
+        }
 }
 </script>
