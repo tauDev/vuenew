@@ -1,17 +1,16 @@
 <template>
-<div>
+<div class="container">
     <h1>Page2</h1>
-    <p>{{info}}</p>
+    <p>{{resu}}</p>
  </div>
 </template>
 
 <script>
-var url = 'http://localhost:3000/show'
 export default {
-  name: 'Page2',
+  name: 'Page1',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      resu: 'Welcome to Your Vue.js App 2'
     }
   }
 }
