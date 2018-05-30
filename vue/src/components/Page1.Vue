@@ -2,6 +2,7 @@
 <div class="container">
  <!-- <p>{{ items }}</p>-->
     <div class="row">
+      <!--<p v-if="items" v-for="item in items" :key="item">item : {{ item }}</p>-->
                <div class="col-md-8">
                 <table class="table table-bordered table-striped">
                     <thead>
@@ -10,7 +11,7 @@
                       <th style="text-align: center">NAME</th>
                        <th style="text-align: center">PASSWORD</th>
                     </thead>
-                    <tr v-for="item in items">
+                    <tr v-for="item in items" :key="item._id">
                       <td>{{ item._id }}</td>
                       <td>{{ item.No }}</td>
                       <td>{{ item.Uname }}</td>
@@ -22,8 +23,15 @@
             </div>
             </div>
              <hr>
+             <div class="row">
+               <div class="form-group">
+               <input class="form-control" style="margin-bottom: 20px" type="text" name="No" v-model="No" placeholder="No" />
+                <input class="form-control" style="margin-bottom: 20px" type="text" name="Uname" v-model="Uname" placeholder="name" />
+                <input class="form-control" style="margin-bottom: 20px" name="Password" v-model="Password" placeholder="Password" type="password" />
+              </div>
+               </div>
             <!-- {{ items }} -->
-            <div class="col-md-4">
+           <!-- <div class="col-md-4">
               <div class="form-group">
                 <span><b>{{ action }}</b></span>
                 <hr>
@@ -34,13 +42,13 @@
                 <button class="btn btn-outline-warning" v-on:click="updateItem">update</button>
                 <button class="btn btn-outline-danger">delete</button>
               </div>
-            </div>
+            </div>-->
 </div>
 </template>
 <script>
 import axios from 'axios'
-import qs from 'query-string'
 export default {
+  name: 'Page1',
  data () {
    return {
      items: [],
@@ -49,17 +57,22 @@ export default {
      Password: '',
      updateId: '',
      action: 'New item',
-     update_id: '',
+    update_id: '',
      backup: {} //used to save old value to search
    }
  },
-   created() {
-     axios.get('http://localhost:3000/show')
+ methods:{
+   loadData () {
+     return axios.get('http://localhost:3000/show')
+   } 
+ },
+   created () {
+     this.loadData()
             //http://jsonplaceholder.typicode.com/todos
             .then(response => {
                 this.items = response.data
-            })
-   }
+          })
+      }
 }
 </script>
 

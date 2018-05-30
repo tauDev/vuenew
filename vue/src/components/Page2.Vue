@@ -1,7 +1,7 @@
 <template>
-<div id="p2">
+<div class="page2">
     <h1>Page2</h1>
-    <p>Original message: "{{ tickets }}"</p>
+    <p v-for="tic in tickets" :key="tic">Original message: "{{ tic.No }}"</p>
  </div>
 </template>
 <script>
@@ -13,8 +13,8 @@ export default {
             tickets: []
         }
     },
-        created() {
-            axios.get('http://localhost:3000/show')
+        mounted() {
+            axios.get('http://localhost:3000/display')
             //http://jsonplaceholder.typicode.com/todos
             .then(response => {
                 this.tickets = response.data
@@ -22,3 +22,20 @@ export default {
         }
 }
 </script>
+
+<style scoped>
+h1, h2 {
+  font-weight: normal;
+}
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+li {
+  display: inline-block;
+  margin: 0 10px;
+}
+a {
+  color: #42b983;
+}
+</style>

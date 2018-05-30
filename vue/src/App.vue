@@ -16,8 +16,8 @@
             <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1<span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><router-link to="/page1">page 1-1</router-link></li>
-                <li><router-link to="/page2">page 1-2</router-link></li>
+                <li><router-link to="/page1" @click="movie()">page 1-1</router-link></li>
+                <li><router-link to="/page2" @click="music()">page 1-2</router-link></li>
                 <li><a href="#">page 1-3</a></li>
                 </ul>
               </li>
@@ -38,7 +38,17 @@
 
 <script>
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+  },
+  methods: {
+    movie () {
+      this.$router.push({ path: '/page1'})
+    },
+    music () {
+      this.$router.push({ path: '/page2'})
+    }
+  }
 }
 
 </script>
