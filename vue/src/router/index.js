@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import Page1 from '@/components/Page1'
 import Page2 from '@/components/Page2'
+import PageEdit from '@/components/PageEdit'
 
 Vue.use(Router)
 export default new Router({
@@ -24,6 +25,12 @@ export default new Router({
       name: 'Page2',
       component: Page2,
       props: true
-    }
+    },
+    {
+    path: '/edit/:id',
+    name: 'Edit',
+    component: PageEdit,
+    props: true
+  }
   ]
 })
