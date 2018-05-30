@@ -1,6 +1,7 @@
 <template>
 <div class="container">
  <!-- <p>{{ items }}</p>-->
+ <form>
     <div class="row">
       <!--<p v-if="items" v-for="item in items" :key="item">item : {{ item }}</p>-->
                <div class="col-md-8">
@@ -22,27 +23,22 @@
                 </table>
             </div>
             </div>
+            </form>
              <hr>
              <div class="row">
                <div class="form-group">
                <input class="form-control" style="margin-bottom: 20px" type="text" name="No" v-model="No" placeholder="No" />
                 <input class="form-control" style="margin-bottom: 20px" type="text" name="Uname" v-model="Uname" placeholder="name" />
                 <input class="form-control" style="margin-bottom: 20px" name="Password" v-model="Password" placeholder="Password" type="password" />
+              <button class="btn btn-outline-primary" v-on:click="postPost()" type="submit">create</button>
+              <ul v-if="msg && msg.length">
+                <li v-for="mssg of msg" :key="mssg">
+                  <p>{{ mssg }}</p>
+                  </li>
+                </ul>
+              
               </div>
                </div>
-            <!-- {{ items }} -->
-           <!-- <div class="col-md-4">
-              <div class="form-group">
-                <span><b>{{ action }}</b></span>
-                <hr>
-                <input class="form-control" style="margin-bottom: 20px" type="text" name="No" v-model="No" placeholder="No" />
-                <input class="form-control" style="margin-bottom: 20px" type="text" name="Uname" v-model="Uname" placeholder="name" />
-                <input class="form-control" style="margin-bottom: 20px" name="Password" v-model="Password" placeholder="Password" type="password" />
-                <button class="btn btn-outline-primary" v-on:click="createItem">create</button>
-                <button class="btn btn-outline-warning" v-on:click="updateItem">update</button>
-                <button class="btn btn-outline-danger">delete</button>
-              </div>
-            </div>-->
 </div>
 </template>
 <script>
@@ -58,10 +54,22 @@ export default {
      updateId: '',
      action: 'New item',
     update_id: '',
+    msg: '',
      backup: {} //used to save old value to search
    }
  },
  methods:{
+    postPost: function (event) {
+        axios.post('http://localhost:3000/insert',{
+          No: this.No,
+          Uname: this.Uname,
+          Password: this.Password
+        })
+        .then(result => {
+          this.msg = result.data
+          window.location.reload(true)
+        })
+   },
    loadData () {
      return axios.get('http://localhost:3000/show')
    } 
@@ -74,6 +82,7 @@ export default {
           })
       }
 }
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
