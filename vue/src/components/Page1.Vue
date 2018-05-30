@@ -19,6 +19,7 @@
                       <td>{{ item.Password }}</td>
                       <td><button class="btn btn-warning" v-on:click="setUpdate(item)">edit</button></td>
                       <td><button class="btn btn-danger" v-on:click="remove(item)">delete</button></td>
+                      <td style="display:none;">{{ No = items.length +1 }}</td>
                     </tr>
                 </table>
             </div>
@@ -27,16 +28,10 @@
              <hr>
              <div class="row">
                <div class="form-group">
-               <input class="form-control" style="margin-bottom: 20px" type="text" name="No" v-model="No" placeholder="No" />
+               <input class="form-control" style="margin-bottom: 20px" type="text" name="No" v-model="No" placeholder="No"/>
                 <input class="form-control" style="margin-bottom: 20px" type="text" name="Uname" v-model="Uname" placeholder="name" />
                 <input class="form-control" style="margin-bottom: 20px" name="Password" v-model="Password" placeholder="Password" type="password" />
-              <button class="btn btn-outline-primary" v-on:click="postPost()" type="submit">create</button>
-              <ul v-if="msg && msg.length">
-                <li v-for="mssg of msg" :key="mssg">
-                  <p>{{ mssg }}</p>
-                  </li>
-                </ul>
-              
+              <button class="btn btn-outline-primary" v-on:click="postPost()" type="submit">create</button>              
               </div>
                </div>
 </div>
@@ -66,7 +61,7 @@ export default {
           Password: this.Password
         })
         .then(result => {
-          this.msg = result.data
+         // this.msg = result.data
           window.location.reload(true)
         })
    },
