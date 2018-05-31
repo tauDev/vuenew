@@ -27,7 +27,7 @@ export default new Router({
       props: true
     },
     {
-    path: '/edit/:id',
+    path: '/edit/:id/:uname/:password',
     name: 'Edit',
     component: PageEdit,
     props: true

@@ -17,7 +17,7 @@
                       <td>{{ item.No }}</td>
                       <td>{{ item.Uname }}</td>
                       <td>{{ item.Password }}</td>
-                      <td><button class="btn btn-warning" v-on:click="setUpdate(item.No)">edit</button></td>
+                      <td><button class="btn btn-warning" v-on:click="setUpdate(item.No,item.Uname,item.Password)">edit</button></td>
                       <td><button class="btn btn-danger" v-on:click="remove(item)">delete</button></td>
                       <td style="display:none;">{{ No = items.length +1 }}</td>
                     </tr>
@@ -55,7 +55,7 @@ export default {
  },
  methods:{
     postPost: function (event) {
-        axios.post('http://localhost:3000/insert',{
+        axios.post('http://192.168.0.124:3000/insert',{
           No: this.No,
           Uname: this.Uname,
           Password: this.Password
@@ -65,12 +65,12 @@ export default {
           window.location.reload(true)
         })
    },
-   setUpdate: function(event) {
+   setUpdate: function(event,event1,event2) {
      //alert(event)
-     this.$router.push('Edit/'+event)
+     this.$router.push('Edit/'+event+"/"+event1+"/"+event2)
    },
    loadData () {
-     return axios.get('http://localhost:3000/show')
+     return axios.get('http://192.168.0.124:3000/show')
    } 
  },
    created () {
