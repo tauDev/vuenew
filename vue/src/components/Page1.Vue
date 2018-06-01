@@ -17,7 +17,7 @@
                       <td>{{ item.No }}</td>
                       <td>{{ item.Uname }}</td>
                       <td>{{ item.Password }}</td>
-                      <td><button class="btn btn-warning" v-on:click="setUpdate(item.No,item.Uname,item.Password)">edit</button></td>
+                      <td><button class="btn btn-warning" v-on:click="setUpdate(item._id,item.No,item.Uname,item.Password)">edit</button></td>
                       <td><button class="btn btn-danger" v-on:click="remove(item)">delete</button></td>
                       <td style="display:none;">{{ No = items.length +1 }}</td>
                     </tr>
@@ -65,9 +65,9 @@ export default {
           window.location.reload(true)
         })
    },
-   setUpdate: function(event,event1,event2) {
+   setUpdate: function(event,event1,event2,event3) {
      //alert(event)
-     this.$router.push('Edit/'+event+"/"+event1+"/"+event2)
+     this.$router.push('Edit/'+event+"/"+event1+"/"+event2+"/"+event3)
    },
    loadData () {
      return axios.get('http://192.168.0.124:3000/show')

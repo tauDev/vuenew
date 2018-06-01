@@ -2,9 +2,13 @@
 <div class="container">
     <h1>Edit</h1>
     <div class="text-left">
+        <div class="form-group">
+            <label for="Id">Id :</label>
+            <input type="text" v-model="id" class="form-control">
+        </div>
     <div class="form-group">
         <label for="No">No :</label>
-        <input type="text" v-model="id" class="form-control">        
+        <input type="text" v-model="No" class="form-control">        
     </div>
     <div class="form-group">
         <label for="name">Name :</label>
@@ -27,7 +31,8 @@ export default {
     name: 'Edit',
     data () {
         return {
-            id: 0,
+            id: '',
+            No: '',
             uname: '',
             pass: '',
             msg: 'Hey com here !'
@@ -35,6 +40,7 @@ export default {
     },
     created() {
         this.id = this.$route.params.id
+        this.No = this.$route.params.No
         this.uname = this.$route.params.uname
         this.pass = this.$route.params.password
     },
