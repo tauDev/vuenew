@@ -25,7 +25,6 @@
 </template>
 
 <script>
-//import router from '../router'
 import axios from 'axios'
 export default {
     name: 'Edit',
@@ -49,17 +48,14 @@ export default {
             router.go(-1)
         },
         GoBack: function(event,event1,event2){
-            //alert("name:" + event)
          axios.post('http://192.168.0.124:3000/update',{
           id: event,
           uname: event1,
           pass: event2
         })
         .then(result => {
-         // this.msg = result.data
          this.$router.push('/page1')
         })
-            //this.$router.push('/page1')
         }
     }
 }

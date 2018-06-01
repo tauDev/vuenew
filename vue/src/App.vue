@@ -7,7 +7,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
-              </button>
+            </button>
             <a class="navbar-brand" href="#">WebSiteName</a>
           </div>
             <div class="collapse navbar-collapse" id="myNavbar">
@@ -42,10 +42,10 @@ export default {
   },
   methods: {
     movie () {
-      this.$router.push({ path: '/page1'})
+      this.$router.push({path: '/page1'})
     },
     music () {
-      this.$router.push({ path: '/page2'})
+      this.$router.push({path: '/page2'})
     }
   }
 }

@@ -13,9 +13,9 @@ module.exports = {
     // consider switching to `plugin:vue/strongly-recommended` or `plugin:vue/recommended` for stricter rules.
     'plugin:vue/essential',
     "plugin:vue/strongly-recommended",
-    "plugin:vue/recommended"
+    "plugin:vue/recommended",
     // https://github.com/standard/standard/blob/master/docs/RULES-en.md
-    //'standard'
+    'standard'
   ],
   // required to lint *.vue files
   plugins: [

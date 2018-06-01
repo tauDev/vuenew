@@ -4,8 +4,10 @@ import HelloWorld from '@/components/HelloWorld'
 import Page1 from '@/components/Page1'
 import Page2 from '@/components/Page2'
 import PageEdit from '@/components/PageEdit'
+import Boost from 'bootstrap-vue'
 
 Vue.use(Router)
+Vue.use(Boost)
 export default new Router({
   routes: [
     {

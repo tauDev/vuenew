@@ -61,12 +61,10 @@ export default {
           Password: this.Password
         })
         .then(result => {
-         // this.msg = result.data
           window.location.reload(true)
         })
    },
    setUpdate: function(event,event1,event2,event3) {
-     //alert(event)
      this.$router.push('Edit/'+event+"/"+event1+"/"+event2+"/"+event3)
    },
    loadData () {
@@ -75,7 +73,6 @@ export default {
  },
    created () {
      this.loadData()
-            //http://jsonplaceholder.typicode.com/todos
             .then(response => {
                 this.items = response.data
           })
