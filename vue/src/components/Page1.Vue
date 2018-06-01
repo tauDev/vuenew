@@ -31,7 +31,7 @@
                <input class="form-control" style="margin-bottom: 20px" type="text" name="No" v-model="No" placeholder="No"/>
                 <input class="form-control" style="margin-bottom: 20px" type="text" name="Uname" v-model="Uname" placeholder="name" />
                 <input class="form-control" style="margin-bottom: 20px" name="Password" v-model="Password" placeholder="Password" type="password" />
-              <button class="btn btn-outline-primary" v-on:click="postPost()" type="submit">create</button>              
+              <button class="btn btn-outline-success" v-on:click="postPost()" type="submit">create</button>              
               </div>
                </div>
 </div>
