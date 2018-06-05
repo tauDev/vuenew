@@ -1,24 +1,24 @@
 <template>
-<div class="page2">
+  <div class="page2">
     <h1>Page2</h1>
-    <p v-for="tic in tickets" :key="tic">Original message: "{{ tic.No }}"</p>
- </div>
+    <p
+      v-for="tic in tickets"
+      :key="tic">Original message: "{{ tic.No }}"
+    </p>
+  </div>
 </template>
 <script>
 import axios from 'axios'
 export default {
-    name: 'Page2',
-    data () {
-        return {
-            tickets: []
-        }
-    },
-        mounted() {
-            axios.get('http://192.168.0.124:3000/show')
-            .then(response => {
-                this.tickets = response.data
-            })
-        }
+  name: 'Page2',
+  data () {
+    return {
+      tickets: []
+    }
+  },
+  mounted () {
+    axios.get('http://192.168.0.124:3000/show').then(response => { this.tickets = response.data })
+  }
 }
 </script>
 

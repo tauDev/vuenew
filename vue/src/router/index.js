@@ -29,10 +29,10 @@ export default new Router({
       props: true
     },
     {
-    path: '/edit/:id/:No/:uname/:password',
-    name: 'Edit',
-    component: PageEdit,
-    props: true
-  }
+      path: '/edit/:id/:No/:uname/:password',
+      name: 'Edit',
+      component: PageEdit,
+      props: true
+    }
   ]
 })
